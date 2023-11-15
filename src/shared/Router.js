@@ -1,17 +1,13 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Home from '../pages/Home';
 import Details from '../pages/Details';
-import { data } from '../shared/data';
 import DetailsUpdate from '../pages/DetailsUpdate';
 import { useState } from 'react';
 import DummyData from '../fakeData.json';
 
 const Router = () => {
-    console.log('DummyData', ...DummyData);
     const [comments, setComments] = useState(DummyData);
-    const [writer, setWriter] = useState('');
-    const [content, setContent] = useState('');
-    console.log('comments', comments);
+    const [clickedMember, setclickedMember] = useState('하니');
 
     return (
         <BrowserRouter>
@@ -22,10 +18,8 @@ const Router = () => {
                         <Home
                             comments={comments}
                             setComments={setComments}
-                            writer={writer}
-                            setWriter={setWriter}
-                            content={content}
-                            setContent={setContent}
+                            clickedMember={clickedMember}
+                            setclickedMember={setclickedMember}
                         />
                     }
                 ></Route>
@@ -36,10 +30,7 @@ const Router = () => {
                         <DetailsUpdate
                             comments={comments}
                             setComments={setComments}
-                            writer={writer}
-                            setWriter={setWriter}
-                            content={content}
-                            setContent={setContent}
+                            setclickedMember={setclickedMember}
                         />
                     }
                 ></Route>

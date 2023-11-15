@@ -1,7 +1,5 @@
 import React from 'react';
-
 import WriteComments from '../components/WriteComments';
-
 import GlobalStyle from '../shared/GlobalStyle';
 import newjeanimg from '../shared/newjeanimg.jpg';
 import styled from 'styled-components';
@@ -20,7 +18,7 @@ const Stimg = styled.img`
     padding-bottom: 20px;
 `;
 
-function Home({ comments, setComments, writer, setWriter, content, setContent }) {
+function Home({ comments, setComments, clickedMember, setclickedMember }) {
     return (
         <>
             <header>
@@ -30,7 +28,12 @@ function Home({ comments, setComments, writer, setWriter, content, setContent })
             <main>
                 <GlobalStyle />
                 <WriteComments setComments={setComments} />
-                <CommentsLayout comments={comments} setComments={setComments} member={'하니'} />
+                <CommentsLayout
+                    comments={comments}
+                    setComments={setComments}
+                    clickedMember={clickedMember}
+                    setclickedMember={setclickedMember}
+                />
             </main>
             <footer></footer>
         </>

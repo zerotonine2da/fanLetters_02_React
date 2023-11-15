@@ -19,9 +19,8 @@ const StBtn = styled.button`
     font-weight: 600;
 `;
 
-function CommentsLayout({ comments, setComments, member }) {
+function CommentsLayout({ comments, setComments, clickedMember, setclickedMember }) {
     const memberList = ['하니', '혜인', '다니엘', '해린', '민지'];
-    const [clickedMember, setclickedMember] = useState('하니');
     const [Clicked, setClicked] = useState('');
 
     const btnClick = (event) => {
@@ -29,6 +28,8 @@ function CommentsLayout({ comments, setComments, member }) {
         return setclickedMember(event.target.value);
     };
 
+    //localStorage.setItem('member', clickedMember);
+    //setclickedMember(localStorage.getItem('member'));
     return (
         <>
             {' '}
@@ -44,7 +45,7 @@ function CommentsLayout({ comments, setComments, member }) {
                     </StBtn>
                 ))}
             </StDiv>
-            <Comments comments={comments} setComments={setComments} member={clickedMember}></Comments>
+            <Comments comments={comments} clickedMember={clickedMember}></Comments>
         </>
     );
 }

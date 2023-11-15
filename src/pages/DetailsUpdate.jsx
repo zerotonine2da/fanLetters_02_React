@@ -69,10 +69,9 @@ const StTextarea = styled.textarea`
     margin-left: 60px;
 `;
 
-function DetailsUpdate({ comments, setComments, writer, setWriter, content, setContent }) {
+function DetailsUpdate({ comments, setComments, setclickedMember }) {
     const navigate = useNavigate();
     const param = useParams();
-
     const foundData = comments.find((item) => {
         //console.log(item.id === params.id);
         return item.id === param.id;
@@ -90,10 +89,18 @@ function DetailsUpdate({ comments, setComments, writer, setWriter, content, setC
     const handleUpdate = () => {
         setIsEdit((prev) => !prev);
 
+        //변경된 내용이 없으면 alert 창 보여주기
+        if (editData.writer === foundData.writer && editData.content === foundData.content) {
+            alert('변경된 내용이 없습니다.');
+            return false;
+        }
+
         //isEdit=false-->!isEdit =true(수정완료)
         if (!isEdit) {
             setComments(comments.map((comment) => (comment.id === foundData.id ? editData : comment)));
-            navigate('/detail/' + foundData.id);
+            let localData = localStorage.getItem('member');
+            setclickedMember(localData);
+            navigate('/');
         }
     };
 
