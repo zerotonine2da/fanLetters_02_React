@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link as StyledLink } from 'react-router-dom';
 import styled from 'styled-components';
 import personImg from '../shared/person.png';
 
@@ -20,7 +20,7 @@ const StP = styled.p`
     text-overflow: ellipsis; //한문장에서만 가능
     white-space: nowrap; //줄바꿈 방지
     overflow: hidden; //해당 너비 넘으면 숨김표시
-    width: 400px;
+    width: 500px;
     background-color: white;
     border-radius: 15px;
     padding: 10px;
@@ -30,7 +30,7 @@ const StP2 = styled.p`
     text-overflow: ellipsis; //한문장에서만 가능
     white-space: nowrap; //줄바꿈 방지
     overflow: hidden; //해당 너비 넘으면 숨김표시
-    width: 400px;
+    width: 500px;
     background-color: white;
     border-radius: 15px;
     padding: 10px;
@@ -55,6 +55,19 @@ const StDiv = styled.div`
     align-items: center;
 `;
 
+const StLink = styled(StyledLink)`
+    display: flex;
+    justify-content: center;
+    border-color: black;
+    text-decoration: none;
+    color: black;
+    transition: all 0.3s ease-in-out;
+    &:hover {
+        transform: scale(1.1);
+        transition: all 0.3s ease-in-out;
+    }
+`;
+
 function Comments({ comments, member }) {
     //멤버에 따라 댓글 필터링
     const filteredByMember = comments.filter((comment) => comment.member === member);
@@ -72,18 +85,19 @@ function Comments({ comments, member }) {
         <>
             {filteredByMember.map((comment) => {
                 return (
-                    <StSection key={comment.id}>
-                        <Link to={`detail/${comment.id}`}>{comment.member}</Link>
-                        <StDiv>
-                            <figure>
-                                <StImg src={personImg} alt="프로필 사진"></StImg>
-                            </figure>
-                            <StP>{comment.writer}</StP>
-                        </StDiv>
-                        <div>
-                            <StP2>{comment.content}</StP2>
-                        </div>
-                    </StSection>
+                    <StLink to={`detail/${comment.id}`}>
+                        <StSection key={comment.id}>
+                            <StDiv>
+                                <figure>
+                                    <StImg src={personImg} alt="프로필 사진"></StImg>
+                                </figure>
+                                <StP>{comment.writer}</StP>
+                            </StDiv>
+                            <div>
+                                <StP2>{comment.content}</StP2>
+                            </div>
+                        </StSection>
+                    </StLink>
                 );
             })}
         </>

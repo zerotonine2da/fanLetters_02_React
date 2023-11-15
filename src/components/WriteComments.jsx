@@ -72,6 +72,10 @@ function WriteComments({ setComments }) {
             <form
                 onSubmit={(event) => {
                     event.preventDefault();
+                    if (writer.length === 0 || content.length === 0) {
+                        alert('작성자명과 내용을 입력해주세요.');
+                        return false;
+                    }
                     const newComment = {
                         id: uuid(),
                         writer,
