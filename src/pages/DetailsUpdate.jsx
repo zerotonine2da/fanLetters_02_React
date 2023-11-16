@@ -98,8 +98,8 @@ function DetailsUpdate({ comments, setComments, setclickedMember }) {
         //isEdit=false-->!isEdit =true(수정완료)
         if (!isEdit) {
             setComments(comments.map((comment) => (comment.id === foundData.id ? editData : comment)));
-            let localData = localStorage.getItem('member');
-            setclickedMember(localData);
+            //let localData = localStorage.getItem('member');
+            //setclickedMember(localData);
             navigate('/');
         }
     };
