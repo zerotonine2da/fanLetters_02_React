@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link as StyledLink, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import personImg from '../shared/person.png';
+import { DataContext } from '../context/DataContext';
 
 const StSection = styled.section`
     background-color: #8dd2ef;
@@ -68,15 +69,17 @@ const StLink = styled(StyledLink)`
     }
 `;
 
-function Comments({ comments, clickedMember }) {
+function Comments() {
+    const data = useContext(DataContext);
+
     //멤버에 따라 댓글 필터링
-    const filteredByMember = comments.filter((comment) => comment.member === clickedMember);
+    const filteredByMember = data.comments.filter((comment) => comment.member === data.clickedMember);
 
     //필터링된 댓글 없으면 '댓글없음 '표시
     if (filteredByMember.length === 0) {
         return (
             <StSection>
-                <StP3>{clickedMember}의 등록된 팬레터가 없습니다. 댓글을 남겨주세요!</StP3>
+                <StP3>{data.clickedMember}의 등록된 팬레터가 없습니다. 댓글을 남겨주세요!</StP3>
             </StSection>
         );
     }

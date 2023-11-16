@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import uuid from 'react-uuid';
 import { useState } from 'react';
 import styled from 'styled-components';
-import { data } from '../shared/data';
 import { memberList } from '../shared/MemberList';
+import { DataContext } from '../context/DataContext';
 
 const StDivWrite = styled.div`
     background-color: #8dd2ef;
@@ -43,7 +43,6 @@ const StTextarea = styled.textarea`
     padding: 10px 15px;
 `;
 
-//#e09dd3;
 const StSeletbox = styled.select`
     background-color: white;
     padding: 7px;
@@ -61,10 +60,11 @@ const StBtnEnroll = styled.button`
     height: 50px;
 `;
 
-function WriteComments({ setComments }) {
+function WriteComments() {
+    const data = useContext(DataContext);
+
     const [writer, setWriter] = useState('');
     const [content, setContent] = useState('');
-
     const [selectMember, setSelectMember] = useState('하니');
 
     return (
@@ -82,9 +82,7 @@ function WriteComments({ setComments }) {
                         content,
                         member: selectMember,
                     };
-                    //data.push(newComment); //data.js
-
-                    setComments(function (prev) {
+                    data.setComments(function (prev) {
                         return [...prev, newComment];
                     });
                 }}

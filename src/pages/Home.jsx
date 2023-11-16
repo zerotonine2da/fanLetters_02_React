@@ -1,10 +1,11 @@
-import React from 'react';
-import WriteComments from '../components/WriteComments';
-import GlobalStyle from '../shared/GlobalStyle';
-import newjeanimg from '../shared/newjeanimg.jpg';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
-import CommentsLayout from '../components/CommentsLayout';
 import logo from '../shared/NewLogo.png';
+import newjeanimg from '../shared/newjeanimg.jpg';
+import WriteComments from '../components/WriteComments';
+import CommentsLayout from '../components/CommentsLayout';
+import { DataContext } from '../context/DataContext';
+
 const StLogo = styled.img`
     height: 150px;
     display: flex;
@@ -18,7 +19,9 @@ const Stimg = styled.img`
     padding-bottom: 20px;
 `;
 
-function Home({ comments, setComments, clickedMember, setclickedMember }) {
+function Home() {
+    const data = useContext(DataContext);
+
     return (
         <>
             <header>
@@ -26,14 +29,8 @@ function Home({ comments, setComments, clickedMember, setclickedMember }) {
                 <Stimg src={newjeanimg}></Stimg>
             </header>
             <main>
-                <GlobalStyle />
-                <WriteComments setComments={setComments} />
-                <CommentsLayout
-                    comments={comments}
-                    setComments={setComments}
-                    clickedMember={clickedMember}
-                    setclickedMember={setclickedMember}
-                />
+                <WriteComments />
+                <CommentsLayout />
             </main>
             <footer></footer>
         </>

@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import { useParams, useLocation, useNavigate } from 'react-router-dom';
+import React, { useContext, useState } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 import personImg from '../shared/person.png';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { Navigate } from 'react-router-dom';
+import { DataContext } from '../context/DataContext';
 
 const StSection = styled.section`
     background-color: #8dd2ef;
@@ -59,11 +59,12 @@ const StDivBtn = styled.div`
     justify-content: flex-end;
 `;
 
-function Details({ comments, setComments }) {
+function Details() {
+    const data = useContext(DataContext);
     const navigate = useNavigate();
     const params = useParams();
 
-    const foundData = comments.find((item) => {
+    const foundData = data.comments.find((item) => {
         //console.log(item.id === params.id);
         return item.id === params.id;
     });
@@ -99,8 +100,8 @@ function Details({ comments, setComments }) {
                         onClick={(event) => {
                             if (window.confirm('삭제하시겠습니까?')) {
                                 //삭제기능
-                                const deleted = comments.filter((comment) => comment.id !== foundData.id);
-                                setComments(deleted);
+                                const deleted = data.comments.filter((comment) => comment.id !== foundData.id);
+                                data.setComments(deleted);
                                 alert('삭제되었습니다.');
                                 navigate('/');
                             } else {

@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import Comments from './Comments';
 import styled from 'styled-components';
+import { DataContext } from '../context/DataContext';
 
 const StDiv = styled.div`
     display: flex;
@@ -19,13 +20,14 @@ const StBtn = styled.button`
     font-weight: 600;
 `;
 
-function CommentsLayout({ comments, setComments, clickedMember, setclickedMember }) {
+function CommentsLayout() {
+    const data = useContext(DataContext);
     const memberList = ['하니', '혜인', '다니엘', '해린', '민지'];
     const [Clicked, setClicked] = useState('');
 
     const btnClick = (event) => {
         setClicked(event.target.value);
-        return setclickedMember(event.target.value);
+        return data.setclickedMember(event.target.value);
     };
 
     //localStorage.setItem('member', clickedMember);
@@ -45,7 +47,7 @@ function CommentsLayout({ comments, setComments, clickedMember, setclickedMember
                     </StBtn>
                 ))}
             </StDiv>
-            <Comments comments={comments} clickedMember={clickedMember}></Comments>
+            <Comments />
         </>
     );
 }
