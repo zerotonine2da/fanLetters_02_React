@@ -4,7 +4,6 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import { memberList } from '../shared/MemberList';
 import { useDispatch, useSelector } from 'react-redux';
-
 import { WriteComment } from '../redux/modules/comments';
 
 const StDivWrite = styled.div`
@@ -63,24 +62,16 @@ const StBtnEnroll = styled.button`
 `;
 
 function WriteComments() {
-    //const data = useContext(DataContext);
-
     const [writer, setWriter] = useState('');
     const [content, setContent] = useState('');
     const [selectMember, setSelectMember] = useState('하니');
 
     //데이터 가져오기
     const data = useSelector((state) => state.setComment);
-    console.log('WrieComments: data: ', data);
 
     //redux
     const [comments, setComments] = useState(data);
     const dispatch = useDispatch();
-
-    useEffect(() => {
-        console.log('변경된');
-        console.log(comments);
-    }, [comments]);
 
     return (
         <StDivWrite>
@@ -92,17 +83,12 @@ function WriteComments() {
                         return false;
                     }
                     const newComment = {
-                        id: uuid(),
                         writer,
                         content,
                         member: selectMember,
+                        id: uuid(),
                     };
-
-                    setComments(function (prev) {
-                        return [...prev, newComment];
-                    });
-                    console.log('디스패치전', comments);
-                    dispatch(WriteComment(comments));
+                    dispatch(WriteComment(newComment));
                 }}
             >
                 <StSection>

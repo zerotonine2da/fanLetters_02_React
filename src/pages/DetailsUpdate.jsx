@@ -1,9 +1,11 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import personImg from '../shared/person.png';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
 
+import { UpdateComment } from '../redux/modules/comments';
 const StSection = styled.section`
     background-color: #8dd2ef;
     min-height: 100px;
@@ -71,12 +73,16 @@ const StTextarea = styled.textarea`
 
 function DetailsUpdate() {
     //const data = useContext(DataContext);
-    {
-        /* 
+    //데이터 가져오기
+    const data = useSelector((state) => state.setComment);
+
+    //redux
+
+    const dispatch = useDispatch();
+
     const navigate = useNavigate();
     const param = useParams();
-    const foundData = data.comments.find((item) => {
-        //console.log(item.id === params.id);
+    const foundData = data.find((item) => {
         return item.id === param.id;
     });
 
@@ -100,18 +106,13 @@ function DetailsUpdate() {
 
         //isEdit=false-->!isEdit =true(수정완료)
         if (!isEdit) {
-            data.setComments(data.comments.map((comment) => (comment.id === foundData.id ? editData : comment)));
-            //let localData = localStorage.getItem('member');
-            //setclickedMember(localData);
+            const updateData = data.map((comment) => (comment.id === foundData.id ? editData : comment));
+            dispatch(UpdateComment(updateData));
             navigate('/');
         }
     };
 
-    */
-    }
-
-    return {
-        /* 
+    return (
         <div>
             <div>
                 <Link to={`/`}>
@@ -145,9 +146,7 @@ function DetailsUpdate() {
                 </StDivBtn>
             </StSection>
         </div>
-
-*/
-    };
+    );
 }
 
 export default DetailsUpdate;

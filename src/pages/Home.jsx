@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import logo from '../shared/NewLogo.png';
 import newjeanimg from '../shared/newjeanimg.jpg';
@@ -27,7 +27,6 @@ function Home() {
             </header>
             <main>
                 <WriteComments />
-
                 <CommentsLayout />
             </main>
             <footer></footer>

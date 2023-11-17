@@ -92,7 +92,7 @@ function Comments() {
 
     return (
         <>
-            {data.map((comment) => {
+            {filteredByMember.map((comment) => {
                 return (
                     <StLink key={comment.id} to={`detail/${comment.id}`}>
                         <StSection>

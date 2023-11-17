@@ -1,8 +1,10 @@
-import React, { useContext, useState } from 'react';
+import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import personImg from '../shared/person.png';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { DeleteComment } from '../redux/modules/comments';
 
 const StSection = styled.section`
     background-color: #8dd2ef;
@@ -59,21 +61,19 @@ const StDivBtn = styled.div`
 `;
 
 function Details() {
-    //const data = useContext(DataContext);
-    {
-        /* 
+    //데이터 가져오기
+    const data = useSelector((state) => state.setComment);
+
+    //redux
+    const dispatch = useDispatch();
     const navigate = useNavigate();
     const params = useParams();
 
-    const foundData = data.comments.find((item) => {
-        //console.log(item.id === params.id);
+    const foundData = data.find((item) => {
         return item.id === params.id;
     });
-*/
-    }
 
-    return {
-        /* 
+    return (
         <div>
             <div>
                 <Link to={`/`}>
@@ -104,8 +104,8 @@ function Details() {
                         onClick={(event) => {
                             if (window.confirm('삭제하시겠습니까?')) {
                                 //삭제기능
-                                const deleted = data.comments.filter((comment) => comment.id !== foundData.id);
-                                data.setComments(deleted);
+                                const deleted = data.filter((comment) => comment.id !== foundData.id);
+                                dispatch(DeleteComment(deleted));
                                 alert('삭제되었습니다.');
                                 navigate('/');
                             } else {
@@ -118,8 +118,7 @@ function Details() {
                 </StDivBtn>
             </StSection>
         </div>
-        */
-    };
+    );
 }
 
 export default Details;
