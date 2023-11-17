@@ -70,31 +70,26 @@ const StLink = styled(StyledLink)`
 `;
 
 function Comments() {
-    //const data = useContext(DataContext);
+    //const data =comments useContext(DataContext);
 
     //데이터 가져오기
     const data = useSelector((state) => state.setComment);
-    //console.log('Comment: data: ', data);
-    //console.log('Comment: member: ', data[0].member);
 
     //클릭된 멤버
     const memberData = useSelector((state) => state.selectMember);
-    const test = data.map((item) => item.member);
-    //console.log('test', test);
 
     //멤버에 따라 댓글 필터링
     const filteredByMember = data.filter((comment) => comment.member === memberData.member);
-    console.log('filteredByMember', filteredByMember);
-    /*
+
     //필터링된 댓글 없으면 '댓글없음 '표시
     if (filteredByMember.length === 0) {
         return (
             <StSection>
-                <StP3>{data.clickedMember}의 등록된 팬레터가 없습니다. 댓글을 남겨주세요!</StP3>
+                <StP3>{memberData.member}의 등록된 팬레터가 없습니다. 댓글을 남겨주세요!</StP3>
             </StSection>
         );
     }
-*/
+
     return (
         <>
             {data.map((comment) => {
