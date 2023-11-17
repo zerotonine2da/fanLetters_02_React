@@ -1,6 +1,5 @@
 //초기값
 const initialState = { member: '하니' };
-
 const memeberChange = 'change';
 
 export const setclickedMember = (payload) => {

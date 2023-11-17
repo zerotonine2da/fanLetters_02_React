@@ -70,7 +70,6 @@ function WriteComments() {
     const data = useSelector((state) => state.setComment);
 
     //redux
-    const [comments, setComments] = useState(data);
     const dispatch = useDispatch();
 
     return (
