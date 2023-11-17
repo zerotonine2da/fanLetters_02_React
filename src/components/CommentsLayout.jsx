@@ -36,7 +36,7 @@ function CommentsLayout() {
     const btnClick = (event) => {
         setClicked(event.target.value);
 
-        dispatch(setclickedMember(Clicked));
+        dispatch(setclickedMember(event.target.value));
 
         //return memberData.setclickedMember(event.target.value);
     };
