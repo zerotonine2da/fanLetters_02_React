@@ -3,7 +3,6 @@ import { useParams, useNavigate } from 'react-router-dom';
 import personImg from '../shared/person.png';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { DataContext } from '../context/DataContext';
 
 const StSection = styled.section`
     background-color: #8dd2ef;
@@ -60,7 +59,9 @@ const StDivBtn = styled.div`
 `;
 
 function Details() {
-    const data = useContext(DataContext);
+    //const data = useContext(DataContext);
+    {
+        /* 
     const navigate = useNavigate();
     const params = useParams();
 
@@ -68,8 +69,11 @@ function Details() {
         //console.log(item.id === params.id);
         return item.id === params.id;
     });
+*/
+    }
 
-    return (
+    return {
+        /* 
         <div>
             <div>
                 <Link to={`/`}>
@@ -114,7 +118,8 @@ function Details() {
                 </StDivBtn>
             </StSection>
         </div>
-    );
+        */
+    };
 }
 
 export default Details;

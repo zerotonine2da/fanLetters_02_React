@@ -1,8 +1,8 @@
-import React, { useContext, useState } from 'react';
-import Comments from './Comments';
+import React, { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import styled from 'styled-components';
-import { DataContext } from '../context/DataContext';
-
+import Comments from './Comments';
+import { setclickedMember } from '../redux/modules/selectMember';
 const StDiv = styled.div`
     display: flex;
     justify-content: space-around;
@@ -21,13 +21,24 @@ const StBtn = styled.button`
 `;
 
 function CommentsLayout() {
-    const data = useContext(DataContext);
+    // const data = useContext(DataContext);
     const memberList = ['하니', '혜인', '다니엘', '해린', '민지'];
     const [Clicked, setClicked] = useState('');
 
+    //데이터 가져오기
+
+    const data = useSelector((state) => state.setComment);
+    //console.log('CommentLayout의 데이터: data: ', data);
+    const memberData = useSelector((state) => state.selectMember);
+
+    const dispatch = useDispatch();
+
     const btnClick = (event) => {
         setClicked(event.target.value);
-        return data.setclickedMember(event.target.value);
+
+        dispatch(setclickedMember(Clicked));
+
+        //return memberData.setclickedMember(event.target.value);
     };
 
     //localStorage.setItem('member', clickedMember);

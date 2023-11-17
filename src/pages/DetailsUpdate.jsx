@@ -3,7 +3,6 @@ import { useParams, useNavigate } from 'react-router-dom';
 import personImg from '../shared/person.png';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { DataContext } from '../context/DataContext';
 
 const StSection = styled.section`
     background-color: #8dd2ef;
@@ -71,8 +70,9 @@ const StTextarea = styled.textarea`
 `;
 
 function DetailsUpdate() {
-    const data = useContext(DataContext);
-
+    //const data = useContext(DataContext);
+    {
+        /* 
     const navigate = useNavigate();
     const param = useParams();
     const foundData = data.comments.find((item) => {
@@ -107,7 +107,11 @@ function DetailsUpdate() {
         }
     };
 
-    return (
+    */
+    }
+
+    return {
+        /* 
         <div>
             <div>
                 <Link to={`/`}>
@@ -141,7 +145,9 @@ function DetailsUpdate() {
                 </StDivBtn>
             </StSection>
         </div>
-    );
+
+*/
+    };
 }
 
 export default DetailsUpdate;

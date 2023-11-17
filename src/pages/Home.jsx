@@ -4,7 +4,6 @@ import logo from '../shared/NewLogo.png';
 import newjeanimg from '../shared/newjeanimg.jpg';
 import WriteComments from '../components/WriteComments';
 import CommentsLayout from '../components/CommentsLayout';
-import { DataContext } from '../context/DataContext';
 
 const StLogo = styled.img`
     height: 150px;
@@ -20,8 +19,6 @@ const Stimg = styled.img`
 `;
 
 function Home() {
-    const data = useContext(DataContext);
-
     return (
         <>
             <header>
@@ -30,6 +27,7 @@ function Home() {
             </header>
             <main>
                 <WriteComments />
+
                 <CommentsLayout />
             </main>
             <footer></footer>

@@ -1,8 +1,8 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Link as StyledLink, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import personImg from '../shared/person.png';
-import { DataContext } from '../context/DataContext';
+import { useDispatch, useSelector } from 'react-redux';
 
 const StSection = styled.section`
     background-color: #8dd2ef;
@@ -70,11 +70,22 @@ const StLink = styled(StyledLink)`
 `;
 
 function Comments() {
-    const data = useContext(DataContext);
+    //const data = useContext(DataContext);
+
+    //데이터 가져오기
+    const data = useSelector((state) => state.setComment);
+    //console.log('Comment: data: ', data);
+    //console.log('Comment: member: ', data[0].member);
+
+    //클릭된 멤버
+    const memberData = useSelector((state) => state.selectMember);
+    const test = data.map((item) => item.member);
+    //console.log('test', test);
 
     //멤버에 따라 댓글 필터링
-    const filteredByMember = data.comments.filter((comment) => comment.member === data.clickedMember);
-
+    const filteredByMember = data.filter((comment) => comment.member === memberData.member);
+    console.log('filteredByMember', filteredByMember);
+    /*
     //필터링된 댓글 없으면 '댓글없음 '표시
     if (filteredByMember.length === 0) {
         return (
@@ -83,10 +94,10 @@ function Comments() {
             </StSection>
         );
     }
-
+*/
     return (
         <>
-            {filteredByMember.map((comment) => {
+            {data.map((comment) => {
                 return (
                     <StLink key={comment.id} to={`detail/${comment.id}`}>
                         <StSection>
