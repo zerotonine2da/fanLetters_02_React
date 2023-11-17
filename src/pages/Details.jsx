@@ -4,7 +4,7 @@ import personImg from '../shared/person.png';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { DeleteComment } from '../redux/modules/comments';
+import { UpdateComment } from '../redux/modules/comments';
 
 const StSection = styled.section`
     background-color: #8dd2ef;
@@ -105,7 +105,7 @@ function Details() {
                             if (window.confirm('삭제하시겠습니까?')) {
                                 //삭제기능
                                 const deleted = data.filter((comment) => comment.id !== foundData.id);
-                                dispatch(DeleteComment(deleted));
+                                dispatch(UpdateComment(deleted));
                                 alert('삭제되었습니다.');
                                 navigate('/');
                             } else {
