@@ -36,7 +36,7 @@ function CommentsLayout() {
         dispatch(setclickedMember(event.target.value));
     };
 
-    //localStorage.setItem('member', clickedMember);
+    //localStorage.setItem('member', Clicked);
     //setclickedMember(localStorage.getItem('member'));
     return (
         <>
