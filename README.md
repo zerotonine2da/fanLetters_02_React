@@ -17,17 +17,17 @@ props-drilling / context / redux 3가지로 구현
 
 ### Home.jsx
 
-메인페이지 구성
+메인페이지 구성  
 (1) WriteComments.jsx : 댓글 작성  
 (2) CommentsLayout.jsx : 아티스트 선택 가능  
 (2-1) Comments.jsx : 등록된 댓글 보여주기
 
 ### Details.jsx
 
-상세페이지 구성
+상세페이지 구성  
 (1) 등록된 댓글 : 조회, 수정, 삭제
 
 ### DetailsUpdate.jsx
 
-상세페이지 댓글 수정
+상세페이지 댓글 수정  
 (1) 등록된 댓글 수정 후 메인페이지로 이동
