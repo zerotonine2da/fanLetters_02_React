@@ -1,3 +1,5 @@
+<img width="649" alt="image" src="https://github.com/zerotonine2da/fanLetters_02_React/assets/96953412/3c239223-ed7b-4a5a-9263-652ad3e1f803">
+
 # 뉴진스 팬레터 홈페이지 만들기 with React
 
 팬레터 CRUD 구현 (작성,조회,수정,삭제)  
